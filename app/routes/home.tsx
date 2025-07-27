@@ -9,7 +9,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-[url('/images/bg-main.svg')] bg-cover">
       <section className="main-section">
         <div className="page-heading">
           <h1>Track Your Applications & Resume Ratings</h1>
