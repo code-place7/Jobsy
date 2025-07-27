@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import ScoreCircle from "./ScoreCircle";
 
 const ResumeCard = ({
   resume: { id, companyName, jobTitle, feedback, imagePath },
@@ -21,6 +22,10 @@ const ResumeCard = ({
           {!companyName && !jobTitle && (
             <h2 className="!text-black font-bold">Resume</h2>
           )}
+        </div>
+
+        <div className="flex-shrink-0">
+          <ScoreCircle score={feedback.overallScore} />
         </div>
       </div>
     </Link>
