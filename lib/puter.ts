@@ -1,6 +1,9 @@
 import { create } from "zustand";
 
 declare global {
+  // here we have defined global interface of window that define all of the different functionalities
+  // that puter.js provides. This is used to access puter.js functionalities in the application.
+  // This is useful for TypeScript to understand the structure of the puter object.
   interface Window {
     puter: {
       auth: {
@@ -42,6 +45,7 @@ declare global {
   }
 }
 
+// and this puterStore ia almost indentical to the Window we declared above and used by zustand to define the store - a place accessible from anywhere in the application and in this case we are storing the puter.js functionalities in this store
 interface PuterStore {
   isLoading: boolean;
   error: string | null;
