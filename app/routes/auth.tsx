@@ -44,7 +44,7 @@ const auth = () => {
                   </button>
                 )}
               </>
-            )}{" "}
+            )}
           </div>
         </section>
       </div>
