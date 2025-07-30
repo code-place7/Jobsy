@@ -100,9 +100,13 @@ interface PuterStore {
   clearError: () => void;
 }
 
+// a shortcut function to get the puter object from the window
+// this is used to avoid repetitive code and to ensure that puter.js is available before accessing
 const getPuter = (): typeof window.puter | null =>
   typeof window !== "undefined" && window.puter ? window.puter : null;
 
+// biggest part of the code that essentially create a zustand store and loads all the puter.js functionalities into the store we need to make our application work with puter.js like signIn and signOut, read and write files, chat with AI,Upload files, etc.
+// this store can be used in any component to access the puter.js functionalities
 export const usePuterStore = create<PuterStore>((set, get) => {
   const setError = (msg: string) => {
     set({
@@ -458,3 +462,9 @@ export const usePuterStore = create<PuterStore>((set, get) => {
     clearError: () => set({ error: null }),
   };
 });
+
+// for all these  backend functionalities to work, we just have to some simple steps:>
+// 1. first we get access to the puter object using getPuter() function
+// 2. then we check if puter.js is available or not
+// 3. if it is available, we can use the puter object to access the functionalities like auth, fs, ai, kv
+// That's it! We can now use these functionalities in our application.
