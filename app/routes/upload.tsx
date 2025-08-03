@@ -1,15 +1,99 @@
 import Navbar from "~/components/Navbar";
 import { useState, type FormEvent } from "react";
+import { useNavigate } from "react-router";
 import FileUploader from "~/components/FileUploader";
+import { usePuterStore } from "~/lib/puter";
+import { convertPdfToImage } from "~/lib/pdf2img";
+import { generateUUID } from "~/lib/utilis";
+import { prepareInstructions, AIResponseFormat } from "../../constants";
 
 const upload = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [statusText, setStatusText] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  const { fs, auth, isLoading, kv, ai } = usePuterStore();
+  const navigate = useNavigate();
 
   const handleFileSelect = (file: File | null) => {
     setFile(file);
   };
+  const handleAnalyze = async ({
+    companyName,
+    jobTitle,
+    jobDescription,
+    file,
+  }: {
+    companyName: string;
+    jobTitle: string;
+    jobDescription: string;
+    file: File;
+  }) => {
+    setIsProcessing(true);
+    setStatusText("Uploading Your File...");
+    //uploading file to puter storage
+    const uploadFile = await fs.upload([file]);
+    if (!uploadFile) {
+      setIsProcessing(false);
+      setStatusText("File upload failed. Please try again.");
+      return;
+    }
+    setStatusText("File uploaded successfully. Converting to Image...");
+
+    //converting pdf to image
+    const imageFile = await convertPdfToImage(file);
+    if (!imageFile.file) {
+      setIsProcessing(false);
+      setStatusText("Image conversion failed. Please try again.");
+      return;
+    }
+    setStatusText("Image converted successfully. Now Uploading it ...");
+    //uploading image to puter storage
+    const uploadedImage = await fs.upload([imageFile.file]);
+    if (!uploadedImage) {
+      setIsProcessing(false);
+      setStatusText("Image upload failed. Please try again.");
+      return;
+    }
+    setStatusText("Image uploaded successfully. Preparing Data resume...");
+    const uuid = generateUUID();
+    const resumeData = {
+      id: uuid,
+      resumePath: uploadFile.path,
+      imagePath: uploadedImage.path,
+      companyName,
+      jobTitle,
+      jobDescription,
+      feedback: "",
+    };
+    //setting the resume data in kv- key-value pair puter store
+    await kv.set(`resume:${uuid}`, JSON.stringify(resumeData));
+
+    setStatusText("Resume data saved successfully. Analyzing...");
+
+    //analyzing the resume using AI
+    const feedback = await ai.feedback(
+      uploadFile.path,
+      prepareInstructions({ jobTitle, jobDescription, AIResponseFormat })
+    );
+    if (!feedback) {
+      setIsProcessing(false);
+      setStatusText("AI analysis failed. Please try again.");
+      return;
+    }
+    // Parsing the feedback response
+    const feedbackText =
+      typeof feedback.message.content === "string"
+        ? feedback.message.content
+        : feedback.message.content[0].text;
+
+    /// Saving the feedback to the resume data
+    resumeData.feedback = JSON.parse(feedbackText);
+    await kv.set(`resume:${uuid}`, JSON.stringify(resumeData));
+    setStatusText("Analysis complete, redirecting...");
+    console.log(resumeData);
+    // navigate(`/resume/${uuid}`);
+  };
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget.closest("form");
@@ -22,7 +106,7 @@ const upload = () => {
 
     if (!file) return;
 
-    // handleAnalyze({ companyName, jobTitle, jobDescription, file });
+    handleAnalyze({ companyName, jobTitle, jobDescription, file });
   };
 
   return (
