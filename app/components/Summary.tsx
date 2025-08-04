@@ -1,4 +1,4 @@
-const Summary = () => {
+const Summary = ({ feedback }: { feedback: Feedback }) => {
   return <div>Summary</div>;
 };
 

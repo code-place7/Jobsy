@@ -1,4 +1,14 @@
-const Ats = () => {
+interface Suggestion {
+  type: "good" | "improve";
+  tip: string;
+}
+
+interface ATSProps {
+  score: number;
+  suggestions: Suggestion[];
+}
+
+const Ats: React.FC<ATSProps> = ({ score, suggestions }) => {
   return <div>Ats</div>;
 };
 
