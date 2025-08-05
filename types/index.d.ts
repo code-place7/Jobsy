@@ -3,6 +3,7 @@ interface Resume {
   companyName?: string;
   jobTitle?: string;
   imagePath: string;
+  imgPathDm: string;
   resumePath: string;
   feedback: Feedback;
 }

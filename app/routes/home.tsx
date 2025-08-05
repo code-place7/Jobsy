@@ -48,15 +48,17 @@ export default function Home() {
           <h1>Track Your Applications & Resume Ratings</h1>
           <h2>Review your submission and check AI-powered feedback</h2>
         </div>
+        <div className="resumes-section">
+          {resumes.length > 0 && (
+            <div className="resumes-section">
+              {resumes.map((resume: Resume) => (
+                <ResumeCard key={resume.id} resume={resume} />
+              ))}
+            </div>
+          )}
+        </div>
       </section>
 
-      {resumes.length > 0 && (
-        <div className="resumes-section">
-          {resumes.map((resume: Resume) => (
-            <ResumeCard key={resume.id} resume={resume} />
-          ))}
-        </div>
-      )}
       {loadingResumes && (
         <div className="flex flex-col items-center justify-center">
           <img src="/images/resume-scan-2.gif" className="w-[200px]" />
@@ -82,4 +84,3 @@ export default function Home() {
     </main>
   );
 }
-``;

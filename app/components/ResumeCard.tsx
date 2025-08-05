@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { usePuterStore } from "~/lib/puter";
 
 const ResumeCard = ({
-  resume: { id, companyName, jobTitle, feedback, imagePath },
+  resume: { id, companyName, jobTitle, feedback, imagePath, imgPathDm },
 }: {
   resume: Resume;
 }) => {
@@ -43,6 +43,17 @@ const ResumeCard = ({
           <ScoreCircle score={feedback.overallScore} />
         </div>
       </div>
+      {imgPathDm && (
+        <div className="gradient-border animate-in fade-in duration-1000">
+          <div className="w-full h-full">
+            <img
+              src={imgPathDm}
+              alt="resume"
+              className="w-full h-[350px] max-sm:h-[200px] object-cover object-top"
+            />
+          </div>
+        </div>
+      )}
 
       {resumeUrl && (
         <div className="gradient-border animate-in fade-in duration-1000">
