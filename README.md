@@ -7,7 +7,7 @@ An AI Smart Applicant Tracking System Which will give you Smart feedback Of Your
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Puppeteer](https://img.shields.io/badge/Puppeteer-40B5A4?style=for-the-badge&logo=puppeteer&logoColor=white)](https://pptr.dev/)
+[![Puter.com](https://img.shields.io/badge/Puter.com-1A1A1A?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEyIDJDNi40NyAyMiA4LjAzIDMuNzggMTEuNiA1LjQzQzkuMDIgNS42OCAxMC4zNiA1LjM3IDEyIDVjMi43NiAwIDUgMi4yNCA1IDUgMCAyLjQyLTIuMDMgNS00IDUtMS4yMSAwLTIuNS0uNzEtMy4zOC0xLjU4LTIuNTctMi41NS00LjIyLTcuNTYtMi43Mi0xMS41MiA0LjE4LjQgNC44MyAxLjc3IDcuMTEgNC4zMiA2LjYzIDIuNDctLjUgMi42NS0yLjEyIDIuNjUtMy41MSAwLTEuOTMtMS41OS0zLTMuNS0zLTIuNjUgMC01IDItNSA1IDAgMS4yNi40MiAyLjUgMSAxLjY1IDIuMzQgMS43OCA0Ljk2IDIuODUgNy43IDMuMDItMi44MiAwLTYuODMtMi43Mi02LjgzLTYuOCAwLTIuNzIgMi4yNy01IDUtNXoiLz48L3N2Zz4=)](https://puter.com)
 
 </div>
 
