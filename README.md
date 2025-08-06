@@ -1,8 +1,14 @@
-# Welcome to React Router!
+<div align="center">
 
-A modern, production-ready template for building full-stack React applications using React Router.
+# 🤖Jobsy
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+Welcome to your Resume Buddy!
+An AI Smart Applicant Tracking System Which will give you Smart feedback Of Your Resume For your dream job.
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+
+</div>
 
 ## Features
 
@@ -18,15 +24,17 @@ A modern, production-ready template for building full-stack React applications u
 
 ### Installation
 
-Install the dependencies:
+Clone the repo and install dependencies:
 
 ```bash
+git clone https://github.com/code-place7/jobsy.git
+cd jobsy
 npm install
 ```
 
 ### Development
 
-Start the development server with HMR:
+Start the development server :
 
 ```bash
 npm run dev
@@ -84,4 +92,42 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 
 ---
 
-Built with ❤️ using React Router.
+## 📸 Screenshots
+
+<div align="center">
+  <p>
+    <img src="/public/images/home.png" alt="Home Page" width="250">
+    
+  </p>
+  <p>
+    <img src="/public/images/upload.png" alt="Product Details" width="250">
+    
+  </p>
+  <p>
+    <img src="/public/images/summary.png" alt="Product Details" width="250">
+    
+  </p>
+</div>
+
+## 🤝 Contributing
+
+Pull requests are welcome!
+For major changes, please open an issue first to discuss what you would like to change.
+
+## 📞 Contact
+
+Have questions or suggestions? Reach out to us:
+
+- **Email**: monumandel3@gmail.com
+
+---
+
+<div align="center">
+  
+### ⭐ Star us on GitHub — it helps!
+<p align="center">
+ 👨‍💻 Author
+Monu Mandal 
+</p>
+
+</div>
